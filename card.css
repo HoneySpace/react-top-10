@@ -11,12 +11,14 @@ div.info
 div.card
 {  
   margin-left: 10px;
+  margin-right: 10px;
   margin-top: 10px;
   border-radius: 10px;
   width: 340px;
   min-height: 500px;
   padding-bottom: 10px;
   padding-top: 10px;
+  transition: all 0.075s linear;
 }
 div.card.L
 {  
@@ -25,6 +27,11 @@ div.card.L
 div.card.D
 {  
   background:rgb(45, 45, 45);
+}
+div.card:hover
+{
+  transform: scale(1.01,1.01);
+  box-shadow: 0px 0px 10px rgb(0, 0, 0)
 }
 
 h1.title
