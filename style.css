@@ -1,0 +1,94 @@
+body
+{
+  margin: 0;
+  background:hsl(0, 0%, 70%);
+}
+
+.LText
+{ 
+  color: hsl(36, 100%, 50%);
+}
+.DText
+{ 
+  color: hsl(31, 83%, 56%);
+}
+
+.j-c
+{
+  font-family: Calibri;  
+  display: -webkit-flex; 
+  display: flex; 
+  flex-direction:row;
+  justify-content: center;
+  align-items: center;  
+}
+.warp
+{
+  flex-wrap: wrap;
+}
+
+div.hat
+{
+  min-width: 360px;
+  min-height: 90px;  
+}
+
+div.hat.L
+{  
+  background:hsl(0, 0%, 85%);
+}
+div.hat.D
+{  
+  background:rgb(45, 45, 45);
+}
+
+img.icon
+{
+  width: 100px;
+}
+button.Mode
+{
+  position: absolute;  
+  margin-left: 0;
+  margin-top: 0;
+  top:0;
+}
+
+h1.Title
+{
+  line-break: normal;
+  font-size: 40px;
+  text-align: center;
+  font-family: 'Staatliches', cursive;
+  min-width: 360px;
+  max-width: 400px;
+  min-height: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+@media (max-width:360px)
+{
+  img.icon
+  {
+    display: none;
+  }
+}
+
+.flex-container {
+display: -webkit-flex; 
+display: flex; 
+flex-direction:row;
+justify-content: center;
+align-items: center;
+}
+.right
+{
+  margin-left: auto;
+  margin-right: 10px;
+}
+.left
+{
+  margin-left: 10px;
+  margin-right: auto;
+}

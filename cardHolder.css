@@ -1,0 +1,13 @@
+div.holder
+{
+  padding-bottom: 15px;
+}
+div.holder.D
+{
+  background:hsl(0, 0%, 70%);
+}
+
+div.holder.L
+{
+  background:hsl(0, 0%, 50%);
+}
