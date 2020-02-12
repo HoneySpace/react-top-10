@@ -8,7 +8,7 @@ export class Card extends Component
 {
   constructor(props)
   {
-    super(props);        
+    super(props);  //s     
   }
 
   heroPlaceholder = () => 
