@@ -8,7 +8,7 @@ export class Card extends Component
 {
   constructor(props)
   {
-    super(props);      
+    super(props);        
   }
 
   heroPlaceholder = () => 
@@ -36,11 +36,20 @@ export class Card extends Component
     );
   }
 
+  componentWillUpdate()
+  {
+    console.log('before');
+
+    const streamer = this.props.streamer;      
+    console.log(streamer.language);
+    console.log(streamer); 
+  }
   render()
   {    
-    console.log("render: streamer "+this.props.streamer.index);
-    console.log(this.props.streamer);
-    console.log(this.props.streamer.title);
+    console.log("render: streamer "+this.props.streamer.index);      
+    const streamer = this.props.streamer;      
+    console.log(streamer.language);
+    console.log(streamer);      
     const mode =this.props.darkMode ? "D":"L"
     const textMode =(this.props.darkMode ? "D":"L")+"Text";
     const Title = this.props.streamer.title ? this.props.streamer.title :"Stream Title";
