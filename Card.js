@@ -39,7 +39,6 @@ export class Card extends Component
   componentWillUpdate()
   {
     console.log('before');
-
     const streamer = this.props.streamer;      
     console.log(streamer.language);
     console.log(streamer); 
@@ -47,8 +46,9 @@ export class Card extends Component
   render()
   {    
     console.log("render: streamer "+this.props.streamer.index);      
-    const streamer = this.props.streamer;      
-    console.log(streamer.language);
+    const {streamer} = this.props;  
+    let {language} = streamer;        
+    console.log(language);
     console.log(streamer);      
     const mode =this.props.darkMode ? "D":"L"
     const textMode =(this.props.darkMode ? "D":"L")+"Text";
