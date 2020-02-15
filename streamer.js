@@ -1,19 +1,19 @@
 export class Streamer
 {
+    userId;
+    userName;
+
+    heroName;
+    heroRole;
+  
+    viewerCount;
+    title;
+    iconURL;
+    streamURL;
+    language;
   constructor(i)
   {
-    this.index=i;    
-    this.userId;
-    this.userName;
-
-    this.heroName;
-    this.heroRole;
-  
-    this.viewerCount;
-    this.title;
-    this.iconURL;
-    this.streamURL;
-    this.language;
+    this.index=i;       
   }
 
 }
