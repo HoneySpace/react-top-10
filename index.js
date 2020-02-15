@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import './style.css';
+import './ThemeButton.css';
+
 import {Hat} from './Hat';
 import {CardHolder} from './cardHolder';
 import {Card} from './Card';
+import {ThemeContext} from './themeContext';
+
 
 class App extends Component {
 
@@ -12,7 +16,7 @@ class App extends Component {
     super();
     this.state = {
       name: 'React',
-      darkMode : true,
+      darkMode : false,
     };
   }
 
@@ -30,13 +34,16 @@ class App extends Component {
   }
 
   render() { 
-    const mode= this.state.darkMode;  
+    const mode= this.state.darkMode;
+    const tm = mode ? "D":"L"  
     return (
-      <div>        
-        <Hat darkMode={mode}/>
-        <button className="Mode" onClick={this.changeMode}> {this.getMode()} </button>
-        <CardHolder darkMode={mode}/>  
-      </div>            
+      <ThemeContext.Provider value={this.state.darkMode}>
+        <div>        
+         <Hat/>
+          <button className={"themeSwitch "+tm} onClick={this.changeMode}> {this.getMode()} </button>
+         <CardHolder/>  
+       </div>            
+      </ThemeContext.Provider>
     );
   }
 }

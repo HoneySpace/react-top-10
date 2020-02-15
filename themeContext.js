@@ -1,3 +1,8 @@
+import React, { Component } from 'react';
+
 export const ThemeContext = React.createContext(
-  true
+  {
+    isDark: true,
+    switchTheme: () => {this.isDark = !this.isDark}
+  }
 );

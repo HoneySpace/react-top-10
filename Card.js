@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import {Streamer} from './streamer';
+import {ThemeContext} from './themeContext';
+
 import './style.css';
 import './card.css';
 
@@ -13,7 +15,7 @@ export class Card extends Component
 
   heroPlaceholder = () => 
   {
-    const textMode =(this.props.darkMode ? "D":"L")+"Text";
+    const textMode =(this.context ? "D":"L")+"Text";
     return(
       <p className={"info left "+textMode}>
         Hero not choosen
@@ -23,7 +25,7 @@ export class Card extends Component
 
   hero = () =>
   {
-    const textMode =(this.props.darkMode ? "D":"L")+"Text";
+    const textMode =(this.context ? "D":"L")+"Text";
     return(
       <div className="j-c">
         <p className={"left "+textMode}>
@@ -43,8 +45,8 @@ export class Card extends Component
     let {language} = streamer;        
     console.log(language);
     console.log(streamer);      
-    const mode =this.props.darkMode ? "D":"L"
-    const textMode =(this.props.darkMode ? "D":"L")+"Text";
+    const mode =this.context ? "D":"L"
+    const textMode =mode+"Text";
     const Title = this.props.streamer.title ? this.props.streamer.title :"Stream Title";
     const limg = this.props.streamer.iconURL ? this.props.streamer.iconURL :"https://cs-rulit.ru/files/avatars/1548584003.jpg";
     const name = this.props.streamer.userName ? this.props.streamer.userName :"Name: Loading..."
@@ -78,3 +80,5 @@ export class Card extends Component
     
   }
 }
+
+Card.contextType = ThemeContext;

@@ -6,7 +6,7 @@ body
 
 .LText
 { 
-  color: hsl(36, 100%, 50%);
+  color: #45486b;
 }
 .DText
 { 
@@ -35,7 +35,7 @@ div.hat
 
 div.hat.L
 {  
-  background:hsl(0, 0%, 85%);
+  background:#f2f1ed
 }
 div.hat.D
 {  
@@ -45,13 +45,6 @@ div.hat.D
 img.icon
 {
   width: 100px;
-}
-button.Mode
-{
-  position: absolute;  
-  margin-left: 0;
-  margin-top: 0;
-  top:0;
 }
 
 h1.Title

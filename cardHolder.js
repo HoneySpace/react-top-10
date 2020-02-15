@@ -4,6 +4,7 @@ import './style.css';
 import './cardHolder.css';
 import {Card} from './Card';
 import {Streamer} from './streamer';
+import {ThemeContext} from './themeContext';
 
 
 export class CardHolder extends Component
@@ -110,24 +111,18 @@ export class CardHolder extends Component
         resolve();
       }
     );    
-  }  
-  
-  getCard= () =>
-  {
-    let Cards =[];
-    for(let i=0;i<this.count;i++)
-     Cards.push(<Card key={"Card"+i} darkMode={this.props.darkMode} streamer={this.state.streamers[i]}/>);
-    return Cards;
-  }
+  }      
 
   render()
   {
-    const mode=this.props.darkMode ? "D":"L"
+    const mode=this.context ? "D":"L"
     return(
       <div className={"j-c warp holder "+mode}>
-      {this.state.streamers.map(streamer => <Card key={"card"+streamer.index} darkMode={this.props.darkMode} streamer={streamer} />)}
+      {this.state.streamers.map(streamer => <Card key={"card"+streamer.index} streamer={streamer} />)}
       </div>
     );
     
   }
 }
+
+CardHolder.contextType = ThemeContext;
