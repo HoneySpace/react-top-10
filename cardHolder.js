@@ -18,7 +18,7 @@ export class CardHolder extends Component
     }
   };
 
-  count=2;
+  count=10;
 
   constructor(props)
   {
@@ -58,7 +58,7 @@ export class CardHolder extends Component
         {          
           Streamers[i].iconURL = data.data[i].profile_image_url;        
         }
-      }).then(() => {
+      }).then(() => {        
         let request =this.GetStreams + "?user_id=" + Streamers[0].userId;
         for(let i=1;i<Streamers.length;i++)    
           request+='&user_id='+Streamers[i].userId;     
@@ -66,7 +66,7 @@ export class CardHolder extends Component
         {
          const data = response;
          console.log('StreamsData');
-          console.log(data);
+         console.log(data);
          for(let i=0;i<Streamers.length;i++)
          {
            let info = data.data[i];
@@ -74,17 +74,16 @@ export class CardHolder extends Component
             Streamers[i].title = info.title;
             Streamers[i].viewerCount = info.viewer_count; 
           }
-        });    
-      }).then(()=>{
+        }).then(()=>{
         console.log('Установка прошла');
         console.log(Streamers);
         this.setState(
         {
           streamers: Streamers,
-        }
-      )
-      });        
-      });    
+        });
+      });   
+      })        
+      }).catch(er=>console.log(er));;    
   }
 
 
@@ -112,46 +111,7 @@ export class CardHolder extends Component
       }
     );    
   }  
-  SetUserData(streamers) {        
-    let request =this.GetUsers + "?id=" + streamers[0].userId;
-    for(let i=1;i<streamers.length;i++)    
-      request+='&id='+streamers[i].userId; 
-    fetch(request, this.fetchData).then(response => response.json()).then(response =>
-      {
-        const data = response;
-        console.log('UsersData');
-        console.log(data);
-        for(let i=0;i<streamers.length;i++)
-        {          
-          streamers[i].iconURL = data.data[i].profile_image_url;        
-        }
-      });    
-  }
-  //Инфа о трансляции по оверу
-  SetStreamData(streamers) {      
-    let request =this.GetStreams + "?user_id=" + streamers[0].userId;
-    for(let i=1;i<streamers.length;i++)    
-      request+='&user_id='+streamers[i].userId;     
-    fetch(request, this.fetchData).then(response => response.json()).then(response =>
-      {
-        const data = response;
-        console.log('StreamsData');
-        console.log(data);
-        for(let i=0;i<streamers.length;i++)
-        {
-          let info = data.data[i];
-          streamers[i].language = info.language;
-          streamers[i].title = info.title;
-          streamers[i].viewerCount = info.viewer_count; 
-        }
-      });      
-  }
-
-  GetStreamer(index)
-  {
-    return this.Streamers[index];
-  }
-
+  
   getCard= () =>
   {
     let Cards =[];
