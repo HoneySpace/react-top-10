@@ -36,13 +36,6 @@ export class Card extends Component
     );
   }
 
-  componentWillUpdate()
-  {
-    console.log('before');
-    const streamer = this.props.streamer;      
-    console.log(streamer.language);
-    console.log(streamer); 
-  }
   render()
   {    
     console.log("render: streamer "+this.props.streamer.index);      

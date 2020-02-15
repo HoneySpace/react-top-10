@@ -45,16 +45,46 @@ export class CardHolder extends Component
     let p = new Promise((resolve)=>{
         this.SetOWData(resolve, Streamers);
     })
-    p.then(()=>{      
-      this.SetUserData(Streamers);
-      this.SetStreamData(Streamers);        
-      console.log('Установка прошла');
-      console.log(Streamers);
-      this.setState(
+    p.then(()=>{            
+      let request =this.GetUsers + "?id=" + Streamers[0].userId;
+      for(let i=1;i<Streamers.length;i++)    
+        request+='&id='+Streamers[i].userId; 
+      fetch(request, this.fetchData).then(response => response.json()).then(response =>
+      {
+        const data = response;
+        console.log('UsersData');
+        console.log(data);
+        for(let i=0;i<Streamers.length;i++)
+        {          
+          Streamers[i].iconURL = data.data[i].profile_image_url;        
+        }
+      }).then(() => {
+        let request =this.GetStreams + "?user_id=" + Streamers[0].userId;
+        for(let i=1;i<Streamers.length;i++)    
+          request+='&user_id='+Streamers[i].userId;     
+        fetch(request, this.fetchData).then(response => response.json()).then(response =>
+        {
+         const data = response;
+         console.log('StreamsData');
+          console.log(data);
+         for(let i=0;i<Streamers.length;i++)
+         {
+           let info = data.data[i];
+           Streamers[i].language = info.language;
+            Streamers[i].title = info.title;
+            Streamers[i].viewerCount = info.viewer_count; 
+          }
+        });    
+      }).then(()=>{
+        console.log('Установка прошла');
+        console.log(Streamers);
+        this.setState(
         {
           streamers: Streamers,
         }
-      )});    
+      )
+      });        
+      });    
   }
 
 
